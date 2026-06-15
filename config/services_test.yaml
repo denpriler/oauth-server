@@ -1,0 +1,7 @@
+services:
+    App\Tests\Double\InMemoryUserRepository:
+        public: true
+
+    App\Identity\Domain\Repository\UserRepositoryInterface:
+        alias: App\Tests\Double\InMemoryUserRepository
+        public: true
