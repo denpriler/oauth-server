@@ -5,3 +5,19 @@ services:
     App\Identity\Domain\Repository\UserRepositoryInterface:
         alias: App\Tests\Double\InMemoryUserRepository
         public: true
+
+    App\Tests\Double\InMemoryOAuthClientRepository:
+        public: true
+
+    App\OAuth\Domain\Repository\OAuthClientRepositoryInterface:
+        alias: App\Tests\Double\InMemoryOAuthClientRepository
+        public: true
+
+    App\Tests\Double\InMemoryUserProvider:
+        public: true
+
+    # Override the Doctrine entity user provider with in-memory one for tests.
+    # Symfony registers the concrete provider as this internal service ID.
+    security.user.provider.concrete.app_user_provider:
+        alias: App\Tests\Double\InMemoryUserProvider
+        public: true

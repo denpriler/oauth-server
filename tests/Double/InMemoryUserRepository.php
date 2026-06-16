@@ -36,6 +36,11 @@ final class InMemoryUserRepository implements UserRepositoryInterface
 
     public function findByEmail(Email $email): ?User
     {
+        return self::findByEmailStatic($email);
+    }
+
+    public static function findByEmailStatic(Email $email): ?User
+    {
         foreach (self::$users as $user) {
             if ($user->getEmail()->equals($email)) {
                 return $user;

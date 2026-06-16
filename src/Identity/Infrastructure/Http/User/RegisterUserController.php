@@ -13,7 +13,7 @@ use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/api/identity', name: 'identity')]
-class RegisterUserController extends AbstractController
+final class RegisterUserController extends AbstractController
 {
     public function __construct(
         private readonly MessageBusInterface $bus,

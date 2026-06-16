@@ -36,3 +36,7 @@ services:
     # Identity
     App\Identity\Domain\Repository\UserRepositoryInterface:
         class: App\Identity\Infrastructure\Repository\DoctrineUserRepository
+
+    # OAuth
+    App\OAuth\Domain\Repository\OAuthClientRepositoryInterface:
+        class: App\OAuth\Infrastructure\Repository\DoctrineOAuthClientRepository

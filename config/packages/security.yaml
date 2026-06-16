@@ -14,9 +14,18 @@ security:
             # Ensure dev tools and static assets are always allowed
             pattern: ^/(_profiler|_wdt|assets|build)/
             security: false
+        api:
+            pattern: ^/api
+            stateless: true
+            jwt: ~ # Authorization: Bearer <token>
+        oauth:
+            pattern: ^/oauth
+            stateless: true
+            jwt: ~ # Authorization: Bearer <token>
         main:
             lazy: true
-            provider: app_user_provider
+            provider:
+                app_user_provider
 
             # Activate different ways to authenticate:
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -28,6 +37,12 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        # --- API --- #
+        - { path: ^/api/identity/register, roles: PUBLIC_ACCESS }
+        - { path: ^/api/identity/login, roles: PUBLIC_ACCESS }
+        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
+        # --- OAuth --- #
+        - { path: ^/oauth/client, roles: IS_AUTHENTICATED_FULLY }
 
 when@test:
     security:

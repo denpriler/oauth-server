@@ -14,20 +14,15 @@ use Symfony\Component\Messenger\Stamp\HandledStamp;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/api/identity', name: 'identity')]
-class LoginUserController extends AbstractController
+final class LoginUserController extends AbstractController
 {
-    public function __construct(
-        private readonly MessageBusInterface $bus,
-    ) {
-    }
-
     /**
      * @throws ExceptionInterface
      */
     #[Route('/login', name: 'login', methods: ['POST'])]
-    public function __invoke(LoginUserCommand $command): JsonResponse
+    public function __invoke(LoginUserCommand $command, MessageBusInterface $bus): JsonResponse
     {
-        $envelope = $this->bus->dispatch($command);
+        $envelope = $bus->dispatch($command);
         /** @var string $token */
         $token = $envelope->last(HandledStamp::class)->getResult();
 
