@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\OAuth\Domain\Event;
+namespace App\OAuth\Domain\Event\AuthorizationCode;
 
 use DateTimeImmutable;
 use Symfony\Component\Uid\UuidV7;
 
-final readonly class OAuthClientCreated
+final readonly class AuthorizationCodeCreated
 {
     /**
      * Only ID (no need for more r.n.)

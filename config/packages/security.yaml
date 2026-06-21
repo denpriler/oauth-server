@@ -42,6 +42,7 @@ security:
         - { path: ^/api/identity/login, roles: PUBLIC_ACCESS }
         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
         # --- OAuth --- #
+        - { path: ^/oauth/authorize, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/oauth/client, roles: IS_AUTHENTICATED_FULLY }
 
 when@test:

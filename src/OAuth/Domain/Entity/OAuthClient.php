@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\OAuth\Domain\Entity;
 
 use App\OAuth\Domain\Enum\OAuthClient\GrantType;
-use App\OAuth\Domain\Event\OAuthClientCreated;
+use App\OAuth\Domain\Event\OAuthClient\OAuthClientCreated;
 use App\OAuth\Domain\ValueObject\ClientSecretHash;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Uid\UuidV7;

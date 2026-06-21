@@ -40,3 +40,5 @@ services:
     # OAuth
     App\OAuth\Domain\Repository\OAuthClientRepositoryInterface:
         class: App\OAuth\Infrastructure\Repository\DoctrineOAuthClientRepository
+    App\OAuth\Domain\Repository\AuthorizationCodeRepositoryInterface:
+        class: App\OAuth\Infrastructure\Repository\DoctrineAuthorizationCodeRepository
